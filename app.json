@@ -1,0 +1,10 @@
+{
+  "name": "QuickCredit-Frontend",
+  "description": "Quick Credit is an online lending platform that provides short term soft loans to individuals",
+  "scripts": {},
+  "env": {},
+  "formation": {},
+  "addons": [],
+  "buildpacks": [],
+  "stack": "heroku-18"
+}
