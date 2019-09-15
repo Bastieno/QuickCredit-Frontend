@@ -27,3 +27,25 @@ export const login = userData => async (dispatch) => {
     return dispatch(getErrors(error.response.data.error));
   }
 };
+
+export const signUp = (userData, history) => async (dispatch) => {
+  dispatch({ type: LOAD_USER, payload: true });
+  try {
+    dispatch(clearErrors());
+    const newUser = await axios.post(`${API_URL}/auth/signup`, userData);
+
+    const { token } = newUser.data.data;
+
+    setAuthToken(token);
+    const decoded = jwtDecode(token);
+
+    dispatch(setUser(decoded));
+    localStorage.setItem('jwtToken', token);
+    history.push('/userdashBoard');
+
+    return dispatch({ type: LOAD_USER, payload: false });
+  } catch (error) {
+    dispatch({ type: LOAD_USER, payload: false });
+    return dispatch(getErrors(error.response.data.error));
+  }
+};
