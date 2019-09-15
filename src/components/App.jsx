@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import '../assets/css/app.css';
+import Landing from './layout/Landing';
+import Header from './common/Header';
+import Footer from './common/Footer';
 
 class App extends Component {
   render() {
     return (
-      <div className="red">
-        Welcome to QuickCredit
-      </div>
+      <Router>
+        <Header/>
+          <Route exact path="/" component={Landing}/>
+        <Footer/>
+      </Router>
     );
   }
 }
