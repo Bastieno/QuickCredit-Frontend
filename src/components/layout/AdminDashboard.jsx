@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Sidenav from '../common/Sidenav';
 
-class UserDashboard extends Component {
+class AdminDashboard extends Component {
   render() {
     const { user } = this.props.auth;
     return (
@@ -104,7 +104,7 @@ class UserDashboard extends Component {
   }
 }
 
-UserDashboard.propTypes = {
+AdminDashboard.propTypes = {
   auth: PropTypes.object.isRequired,
 };
 
@@ -113,4 +113,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, {})(UserDashboard);
+export default connect(mapStateToProps, {})(AdminDashboard);
