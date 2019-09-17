@@ -9,6 +9,7 @@ import Header from './common/Header';
 import Footer from './common/Footer';
 import Login from './layout/Login';
 import Signup from './layout/Signup';
+import UserDashboard from './layout/UserDashboard';
 
 class App extends Component {
   render() {
@@ -16,10 +17,11 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <Header/>
-          <div>
+          <div className="content-wrapper">
             <Route exact path="/" component={Landing}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/signup" component={Signup}/>
+            <Route exact path="/user-dashboard" component={UserDashboard}/>
           </div>
           <Footer/>
         </Router>

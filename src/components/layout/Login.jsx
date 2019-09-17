@@ -17,14 +17,9 @@ class Login extends Component {
     };
   }
 
-  static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.errors !== prevState.errors) {
-      return { errors: nextProps.errors };
-    }
-
-    if (nextProps.auth.isAuthenticated) {
-      nextProps.history.push('/dashboard');
-      return null;
+  static getDerivedStateFromProps(props, state) {
+    if (props.errors !== state.errors) {
+      return { errors: props.errors };
     }
     return null;
   }
@@ -32,6 +27,15 @@ class Login extends Component {
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
       this.props.history.push('/dashboard');
+    }
+  }
+
+  componentDidUpdate() {
+    if (this.props.auth.isAuthenticated && !this.props.auth.user.isAdmin) {
+      this.props.history.push('/user-dashboard');
+    }
+    if (this.props.auth.isAuthenticated && this.props.auth.user.isAdmin) {
+      this.props.history.push('/admin-dashboard');
     }
   }
 

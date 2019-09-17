@@ -49,3 +49,9 @@ export const signUp = (userData, history) => async (dispatch) => {
     return dispatch(getErrors(error.response.data.error));
   }
 };
+
+export const logout = () => (dispatch) => {
+  localStorage.removeItem('jwtToken');
+  setAuthToken(false);
+  dispatch(setUser({}));
+};
